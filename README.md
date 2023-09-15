@@ -32,6 +32,11 @@ cp .env.example .env
 ```
 To correct database config, see your .env file.
 
+**Run migrations:**
+```bash
+php artisan migrate
+```
+
 **Run server:**
 ```bash
 php artisan serve
