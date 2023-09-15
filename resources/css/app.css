@@ -3,5 +3,17 @@
 @tailwind utilities;
 
 input {
-  @apply p-2 px-4 w-max;
+  @apply p-2 px-4 w-3/4 rounded-sm;
+}
+
+tr > th {
+  @apply p-4 bg-slate-100;
+}
+
+tr:hover > td {
+ @apply bg-slate-50 cursor-pointer;
+}
+
+td {
+  @apply p-4 ;
 }

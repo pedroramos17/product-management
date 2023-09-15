@@ -7,8 +7,8 @@ use App\Models\Product;
 rules([
   'name' => 'required|max:100',
   'description' => 'required|max:255',
-  'price' => 'required|integer|max:8',
-  'amount' => 'required|integer|max:10',
+  'price' => 'required|max:8',
+  'amount' => 'required|integer',
 ]);
 
 state(
@@ -31,7 +31,7 @@ $addProduct = function () {
 
   $this->name = '';
   $this->description = '';
-  $this->price = 0.00;
+  $this->price = 0;
   $this->amount = 0;
   $this->products = Product::all();
 };
@@ -44,18 +44,26 @@ $addProduct = function () {
 </head>
 <body>
   @volt
-    <div class="flex flex-col items-center p-4 space-y-4">
+    <div class="flex flex-col items-center p-8 space-y-4">
       <h1 class="text-2xl font-bold">Add Product</h1>
-        <form wire:submit="addProduct" class="flex flex-col justify-center space-y-5 bg-zinc-200 px-10 py-4 rounded-sm ">
+        <form wire:submit="addProduct" class="flex flex-col justify-start space-y-5 bg-zinc-200 px-6 py-4 rounded-sm w-3/4">
+          <label>Name</label>
           <input type="text" wire:model="name" placeholder="Name">
+          @error('name') <p class="text-red-500">{{ $message }}</p> @enderror
+          <label>Description</label>
           <input type="text" wire:model="description" placeholder="Description">
-          <input type="text" wire:model="price" placeholder="Price">
+          @error('description') <p class="text-red-500">{{ $message }}</p> @enderror
+          <label>Price</label>
+          <input type="number" step="0.01" wire:model="price" placeholder="Price 0.00">
+          @error('price') <p class="text-red-500">{{ $message }}</p> @enderror
+          <label>Amount</label>
           <input type="number" wire:model="amount" placeholder="Amount">
+          @error('amount') <p class="text-red-500">{{ $message }}</p> @enderror
           <button type="submit" class="bg-blue-500 px-8 py-2 rounded-sm text-white self-end">Add</button>
         </form>
 
         <h1 class="text-2xl font-bold pt-24">Products</h1>
-        <table class="table-auto flex justify-start items-end">
+        <table class="w-full">
           <tr>
             <th>Name</th>
             <th>Description</th>
@@ -63,7 +71,7 @@ $addProduct = function () {
             <th>Amount</th>
           </tr>
             @foreach ($products as $product)
-              <tr class=" bg-slate-200 space-x-4 space-y-2 p-4 ">
+              <tr class="bg-slate-200 space-x-4 space-y-2 p-4 rounded-2xl">
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->description }}</td>
                 <td>{{ $product->price }}</td>
