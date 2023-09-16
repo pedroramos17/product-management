@@ -18,7 +18,7 @@ I like the Laravel ecosystem, and beyond learning with anyone's contributions, m
 **In composer:**
  
  ```bash
- composer update
+ composer install
  ```
 
 **With npm:**
