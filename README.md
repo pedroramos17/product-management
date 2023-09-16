@@ -1,6 +1,6 @@
 # Stock management
 
-This project is a tutorial of the Laravel packages folio and volt, showing an app from scratch. The link will be disponible as soon as posible.
+This project is a tutorial of the Laravel packages folio and volt, showing an app from scratch. The link: https://medium.com/@pedrosouza.skylabs/product-management-app-with-laravel-folio-and-volt-pt-1-50fdbed20540
 
 ## Why?
 I like the Laravel ecosystem, and beyond learning with anyone's contributions, maybe I can help someone.
